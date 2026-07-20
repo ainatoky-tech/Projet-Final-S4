@@ -33,5 +33,6 @@ $routes->post('admin/prefixe/store', 'Admin::prefixeStore');
 $routes->get('admin/prefixe/toggle/(:num)', 'Admin::prefixeToggle/$1');
 $routes->get('admin/baremes', 'Admin::baremes');
 $routes->post('admin/bareme/update/(:num)', 'Admin::baremeUpdate/$1');
+$routes->post('admin/bareme/store', 'Admin::baremeStore');
 $routes->get('admin/gains', 'Admin::gains');
 $routes->get('admin/comptes', 'Admin::comptes');

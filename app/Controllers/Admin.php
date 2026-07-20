@@ -101,6 +101,23 @@ class Admin extends BaseController
         return redirect()->to('/admin/baremes')->with('message', 'Barème mis à jour.');
     }
 
+    public function baremeStore()
+    {
+        if ($redirect = $this->checkAdmin()) return $redirect;
+
+        $idTypeOp  = $this->request->getPost('id_type_operation');
+        $montantMin = $this->request->getPost('montant_min');
+        $montantMax = $this->request->getPost('montant_max');
+        $frais      = $this->request->getPost('frais');
+
+        $db = db_connect();
+        $db->query(
+            "INSERT INTO bareme_frais (id_type_operation, montant_min, montant_max, frais) VALUES (?, ?, ?, ?)",
+            [$idTypeOp, $montantMin, $montantMax, $frais]
+        );
+        return redirect()->to('/admin/baremes')->with('message', 'Nouveau barème ajouté.');
+    }
+
     // ---- GAINS ----
 
     public function gains()
