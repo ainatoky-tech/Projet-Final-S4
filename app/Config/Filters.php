@@ -2,6 +2,8 @@
 
 namespace Config;
 
+use App\Filters\AuthFilter;
+use App\Filters\RoleFilter;
 use CodeIgniter\Config\Filters as BaseFilters;
 use CodeIgniter\Filters\Cors;
 use CodeIgniter\Filters\CSRF;
@@ -34,6 +36,8 @@ class Filters extends BaseFilters
         'forcehttps'    => ForceHTTPS::class,
         'pagecache'     => PageCache::class,
         'performance'   => PerformanceMetrics::class,
+        'auth'          => AuthFilter::class,
+        'role'          => RoleFilter::class
     ];
 
     /**
@@ -105,6 +109,9 @@ class Filters extends BaseFilters
      * 'isLoggedIn' => ['before' => ['account/*', 'profiles/*']]
      *
      * @var array<string, array<string, list<string>>>
-     */ 
-    public array $filters = [];
+     */
+    public array $filters = [
+        'role:037'          =>['before' => ['operator/*','operator']],
+        'role:033'          =>['before' => ['operator/*','operator']],
+    ];
 }
