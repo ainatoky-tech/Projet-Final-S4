@@ -72,3 +72,5 @@ et ne pas oublier le ``package.json`` dans la racine du projet
   "devDependencies": {}
 }
 ```
+
+dans ce devoir consiste a ce que la colonne solde n'apparaît pas mais est gérer par une variable 

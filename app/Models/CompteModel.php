@@ -8,4 +8,9 @@ class CompteModel extends Model{
     protected $table = 'compte';
     protected $primaryKey = 'id';
     protected $allowedFields = ['type_compte','id_client'];
+
+    public function showcompte(){
+        return $this->findAll();
+    }  
+    
 }

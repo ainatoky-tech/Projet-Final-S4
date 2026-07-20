@@ -8,4 +8,9 @@ class PrefixeModel extends Model{
     protected $table = 'prefixe';
     protected $primaryKey = 'id';
     protected $allowedFields = ['valeur','actif'];
+
+    public function getallprefix(){
+        return $this->findAll();
+    }
+    
 }
