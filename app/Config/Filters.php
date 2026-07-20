@@ -105,6 +105,6 @@ class Filters extends BaseFilters
      * 'isLoggedIn' => ['before' => ['account/*', 'profiles/*']]
      *
      * @var array<string, array<string, list<string>>>
-     */
+     */ 
     public array $filters = [];
 }
