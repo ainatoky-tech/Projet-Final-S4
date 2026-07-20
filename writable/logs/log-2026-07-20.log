@@ -42,3 +42,103 @@ in SYSTEMPATH/Database/SQLite3/Connection.php on line 163.
 13 SYSTEMPATH/Boot.php(442): CodeIgniter\CLI\Console->run()
 14 SYSTEMPATH/Boot.php(166): CodeIgniter\Boot::runCommand()
 15 ROOTPATH/spark(87): CodeIgniter\Boot::bootSpark()
+ERROR - 2026-07-20 18:45:02 --> Error connecting to the database: Exception: Unable to open database: unable to open database file in /var/www/html/system/Database/SQLite3/Connection.php:111
+Stack trace:
+#0 /var/www/html/system/Database/SQLite3/Connection.php(111): SQLite3->__construct('writable/db/dat...')
+#1 /var/www/html/system/Database/BaseConnection.php(555): CodeIgniter\Database\SQLite3\Connection->connect(false)
+#2 /var/www/html/system/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+#3 /var/www/html/system/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+#4 /var/www/html/system/Database/BaseConnection.php(1706): CodeIgniter\Database\BaseConnection->query('SELECT "NAME" F...')
+#5 /var/www/html/system/Database/BaseConnection.php(1726): CodeIgniter\Database\BaseConnection->listTables()
+#6 /var/www/html/system/Database/MigrationRunner.php(821): CodeIgniter\Database\BaseConnection->tableExists('migrations')
+#7 /var/www/html/system/Database/MigrationRunner.php(699): CodeIgniter\Database\MigrationRunner->ensureTable()
+#8 /var/www/html/system/Commands/Database/MigrateStatus.php(115): CodeIgniter\Database\MigrationRunner->getHistory('')
+#9 /var/www/html/system/CLI/Commands.php(74): CodeIgniter\Commands\Database\MigrateStatus->run(Array)
+#10 /var/www/html/system/CLI/Console.php(47): CodeIgniter\CLI\Commands->run('migrate:status', Array)
+#11 /var/www/html/system/Boot.php(442): CodeIgniter\CLI\Console->run()
+#12 /var/www/html/system/Boot.php(166): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#13 /var/www/html/spark(87): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#14 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: SQLite3 error: Unable to open database: unable to open database file in /var/www/html/system/Database/SQLite3/Connection.php:118
+Stack trace:
+#0 /var/www/html/system/Database/BaseConnection.php(555): CodeIgniter\Database\SQLite3\Connection->connect(false)
+#1 /var/www/html/system/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+#2 /var/www/html/system/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+#3 /var/www/html/system/Database/BaseConnection.php(1706): CodeIgniter\Database\BaseConnection->query('SELECT "NAME" F...')
+#4 /var/www/html/system/Database/BaseConnection.php(1726): CodeIgniter\Database\BaseConnection->listTables()
+#5 /var/www/html/system/Database/MigrationRunner.php(821): CodeIgniter\Database\BaseConnection->tableExists('migrations')
+#6 /var/www/html/system/Database/MigrationRunner.php(699): CodeIgniter\Database\MigrationRunner->ensureTable()
+#7 /var/www/html/system/Commands/Database/MigrateStatus.php(115): CodeIgniter\Database\MigrationRunner->getHistory('')
+#8 /var/www/html/system/CLI/Commands.php(74): CodeIgniter\Commands\Database\MigrateStatus->run(Array)
+#9 /var/www/html/system/CLI/Console.php(47): CodeIgniter\CLI\Commands->run('migrate:status', Array)
+#10 /var/www/html/system/Boot.php(442): CodeIgniter\CLI\Console->run()
+#11 /var/www/html/system/Boot.php(166): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#12 /var/www/html/spark(87): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#13 {main}
+CRITICAL - 2026-07-20 18:45:02 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [SQLite3]: SQLite3 error: Unable to open database: unable to open database file
+[Method: CLI, Route: migrate:status]
+in SYSTEMPATH/Database/BaseConnection.php on line 606.
+ 1 SYSTEMPATH/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+ 3 SYSTEMPATH/Database/BaseConnection.php(1706): CodeIgniter\Database\BaseConnection->query('SELECT "NAME" FROM "SQLITE_MASTER" WHERE "TYPE" = \'table\' AND "NAME" NOT LIKE \'sqlite!_%\' ESCAPE \'!\'')
+ 4 SYSTEMPATH/Database/BaseConnection.php(1726): CodeIgniter\Database\BaseConnection->listTables()
+ 5 SYSTEMPATH/Database/MigrationRunner.php(821): CodeIgniter\Database\BaseConnection->tableExists('migrations')
+ 6 SYSTEMPATH/Database/MigrationRunner.php(699): CodeIgniter\Database\MigrationRunner->ensureTable()
+ 7 SYSTEMPATH/Commands/Database/MigrateStatus.php(115): CodeIgniter\Database\MigrationRunner->getHistory('')
+ 8 SYSTEMPATH/CLI/Commands.php(74): CodeIgniter\Commands\Database\MigrateStatus->run([])
+ 9 SYSTEMPATH/CLI/Console.php(47): CodeIgniter\CLI\Commands->run('migrate:status', [])
+10 SYSTEMPATH/Boot.php(442): CodeIgniter\CLI\Console->run()
+11 SYSTEMPATH/Boot.php(166): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+12 ROOTPATH/spark(87): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+ERROR - 2026-07-20 18:48:10 --> Error connecting to the database: Exception: Unable to open database: unable to open database file in /var/www/html/system/Database/SQLite3/Connection.php:111
+Stack trace:
+#0 /var/www/html/system/Database/SQLite3/Connection.php(111): SQLite3->__construct('db/database.sql...')
+#1 /var/www/html/system/Database/BaseConnection.php(555): CodeIgniter\Database\SQLite3\Connection->connect(false)
+#2 /var/www/html/system/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+#3 /var/www/html/system/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+#4 /var/www/html/system/Database/BaseConnection.php(1706): CodeIgniter\Database\BaseConnection->query('SELECT "NAME" F...')
+#5 /var/www/html/system/Database/BaseConnection.php(1726): CodeIgniter\Database\BaseConnection->listTables()
+#6 /var/www/html/system/Database/MigrationRunner.php(821): CodeIgniter\Database\BaseConnection->tableExists('migrations')
+#7 /var/www/html/system/Database/MigrationRunner.php(699): CodeIgniter\Database\MigrationRunner->ensureTable()
+#8 /var/www/html/system/Commands/Database/MigrateStatus.php(115): CodeIgniter\Database\MigrationRunner->getHistory('')
+#9 /var/www/html/system/CLI/Commands.php(74): CodeIgniter\Commands\Database\MigrateStatus->run(Array)
+#10 /var/www/html/system/CLI/Console.php(47): CodeIgniter\CLI\Commands->run('migrate:status', Array)
+#11 /var/www/html/system/Boot.php(442): CodeIgniter\CLI\Console->run()
+#12 /var/www/html/system/Boot.php(166): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#13 /var/www/html/spark(87): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#14 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: SQLite3 error: Unable to open database: unable to open database file in /var/www/html/system/Database/SQLite3/Connection.php:118
+Stack trace:
+#0 /var/www/html/system/Database/BaseConnection.php(555): CodeIgniter\Database\SQLite3\Connection->connect(false)
+#1 /var/www/html/system/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+#2 /var/www/html/system/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+#3 /var/www/html/system/Database/BaseConnection.php(1706): CodeIgniter\Database\BaseConnection->query('SELECT "NAME" F...')
+#4 /var/www/html/system/Database/BaseConnection.php(1726): CodeIgniter\Database\BaseConnection->listTables()
+#5 /var/www/html/system/Database/MigrationRunner.php(821): CodeIgniter\Database\BaseConnection->tableExists('migrations')
+#6 /var/www/html/system/Database/MigrationRunner.php(699): CodeIgniter\Database\MigrationRunner->ensureTable()
+#7 /var/www/html/system/Commands/Database/MigrateStatus.php(115): CodeIgniter\Database\MigrationRunner->getHistory('')
+#8 /var/www/html/system/CLI/Commands.php(74): CodeIgniter\Commands\Database\MigrateStatus->run(Array)
+#9 /var/www/html/system/CLI/Console.php(47): CodeIgniter\CLI\Commands->run('migrate:status', Array)
+#10 /var/www/html/system/Boot.php(442): CodeIgniter\CLI\Console->run()
+#11 /var/www/html/system/Boot.php(166): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#12 /var/www/html/spark(87): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#13 {main}
+CRITICAL - 2026-07-20 18:48:10 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [SQLite3]: SQLite3 error: Unable to open database: unable to open database file
+[Method: CLI, Route: migrate:status]
+in SYSTEMPATH/Database/BaseConnection.php on line 606.
+ 1 SYSTEMPATH/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+ 3 SYSTEMPATH/Database/BaseConnection.php(1706): CodeIgniter\Database\BaseConnection->query('SELECT "NAME" FROM "SQLITE_MASTER" WHERE "TYPE" = \'table\' AND "NAME" NOT LIKE \'sqlite!_%\' ESCAPE \'!\'')
+ 4 SYSTEMPATH/Database/BaseConnection.php(1726): CodeIgniter\Database\BaseConnection->listTables()
+ 5 SYSTEMPATH/Database/MigrationRunner.php(821): CodeIgniter\Database\BaseConnection->tableExists('migrations')
+ 6 SYSTEMPATH/Database/MigrationRunner.php(699): CodeIgniter\Database\MigrationRunner->ensureTable()
+ 7 SYSTEMPATH/Commands/Database/MigrateStatus.php(115): CodeIgniter\Database\MigrationRunner->getHistory('')
+ 8 SYSTEMPATH/CLI/Commands.php(74): CodeIgniter\Commands\Database\MigrateStatus->run([])
+ 9 SYSTEMPATH/CLI/Console.php(47): CodeIgniter\CLI\Commands->run('migrate:status', [])
+10 SYSTEMPATH/Boot.php(442): CodeIgniter\CLI\Console->run()
+11 SYSTEMPATH/Boot.php(166): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+12 ROOTPATH/spark(87): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
