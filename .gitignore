@@ -23,3 +23,5 @@ docker-compose.yml
 .devcontainer/devcontainer.json
 package.json
 .env
+node_modules
+package-lock.json
