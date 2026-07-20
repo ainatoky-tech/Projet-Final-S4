@@ -16,3 +16,10 @@ application/logs/*
 !application/logs/index.html
 !application/logs/.htaccess
 /vendor/
+writable/*.sqlite
+
+# Environnement perso
+docker-compose.yml
+.devcontainer/devcontainer.json
+package.json
+.env
