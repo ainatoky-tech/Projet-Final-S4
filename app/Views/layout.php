@@ -84,7 +84,11 @@
                         <a href="/operations/historiques">Historique</a>
                         <span class="nav-user"><?= esc(session()->get('nom')) ?></span>
                     <?php elseif (session()->get('user_type') === 'admin'): ?>
-                        <a href="/admin/dashboard">Administration</a>
+                        <a href="/admin/dashboard">Dashboard</a>
+                        <a href="/admin/prefixes">Préfixes</a>
+                        <a href="/admin/baremes">Barèmes</a>
+                        <a href="/admin/gains">Gains</a>
+                        <a href="/admin/comptes">Comptes</a>
                         <span class="nav-user"><?= esc(session()->get('login')) ?></span>
                     <?php endif; ?>
                     <a href="/logout">Déconnexion</a>
