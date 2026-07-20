@@ -28,7 +28,6 @@ class CreateCompteTable extends Migration
             ],
         ]);
         $this->forge->addKey('id', true);
-        $this->forge->addForeignKey('id_client', 'client', 'id', 'CASCADE', 'CASCADE');
         $this->forge->createTable('compte');
     }
 

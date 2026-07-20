@@ -32,7 +32,6 @@ class CreateCommissionTable extends Migration
             ],
         ]);
         $this->forge->addKey('id', true);
-        $this->forge->addForeignKey('id_operateur', 'operateur', 'id', 'CASCADE', 'CASCADE');
         $this->forge->createTable('commission');
     }
 
