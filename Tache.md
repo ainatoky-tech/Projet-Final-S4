@@ -26,12 +26,9 @@ Ce sera un système qui va simuler un opérateur de mobile money
 ### Tache pour 4034:
 **V1:** 
 - préparation de la structure du projet :fait
-- remplissage du formulaire demandé par les prof : fait
+- remplissage du formulaire demandé : fait
 - préparation de la database dans writable en .sqlite: fait
-- aide à la compréhension : en cours
-- configuration des sessions dans le dossier Filters : en cours
-- configuration des modèles : en cours
-- utilisation des migrations pour les tables : en cours 
+- utilisation des migrations pour les tables : fait
 
 ### Tache pour 4075:
 **V1:**
@@ -39,3 +36,4 @@ Ce sera un système qui va simuler un opérateur de mobile money
 - compréhension du sujet : fait
 - creation des fichiers de migrations : fait
 - creation des fichier seeds : fait
+- mise en place de la logique dans controller : fait
