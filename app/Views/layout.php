@@ -78,6 +78,9 @@
                 <?php if (session()->get('logged_in')): ?>
                     <?php if (session()->get('user_type') === 'client'): ?>
                         <a href="/dashboard">Tableau de bord</a>
+                        <a href="/operations/depot">Dépôt</a>
+                        <a href="/operations/retrait">Retrait</a>
+                        <a href="/operations/transfert">Transfert</a>
                         <a href="/operations/historiques">Historique</a>
                         <span class="nav-user"><?= esc(session()->get('nom')) ?></span>
                     <?php elseif (session()->get('user_type') === 'admin'): ?>
