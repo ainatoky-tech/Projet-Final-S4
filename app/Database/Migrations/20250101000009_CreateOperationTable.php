@@ -27,10 +27,9 @@ class CreateOperationTable extends Migration
                 'unsigned'   => true,
                 'null'       => false,
             ],
-            'id_client_destination' => [
-                'type'       => 'INT',
-                'constraint' => 11,
-                'unsigned'   => true,
+            'numero_destination' => [
+                'type'       => 'VARCHAR',
+                'constraint' => 10,
                 'null'       => true,
             ],
             'montant' => [
@@ -43,6 +42,11 @@ class CreateOperationTable extends Migration
                 'constraint' => '15,2',
                 'default'    => 0,
             ],
+            'commission' => [
+                'type'       => 'DECIMAL',
+                'constraint' => '15,2',
+                'default'    => 0,
+            ],
             'date_operation' => [
                 'type' => 'DATETIME',
                 'null' => true,
@@ -51,7 +55,6 @@ class CreateOperationTable extends Migration
         $this->forge->addKey('id', true);
         $this->forge->addForeignKey('id_type_operation', 'type_operation', 'id', 'CASCADE', 'CASCADE');
         $this->forge->addForeignKey('id_client_source', 'client', 'id', 'CASCADE', 'CASCADE');
-        $this->forge->addForeignKey('id_client_destination', 'client', 'id', 'SET NULL', 'SET NULL');
         $this->forge->createTable('operation');
     }
 

@@ -16,6 +16,7 @@
                 <th>Sens</th>
                 <th>Montant</th>
                 <th>Frais</th>
+                <th>Commission</th>
                 <th>Détail</th>
             </tr>
         </thead>
@@ -27,13 +28,14 @@
                 <td><span class="badge badge-<?= $op['sens'] === 'CREDIT' ? 'actif' : 'inactif' ?>"><?= $op['sens'] ?></span></td>
                 <td><?= number_format($op['montant_mouvement'], 2, ',', ' ') ?> Ar</td>
                 <td><?= number_format($op['frais'], 2, ',', ' ') ?> Ar</td>
+                <td><?= number_format($op['commission'], 2, ',', ' ') ?> Ar</td>
                 <td>
-                    <?php if ($op['type_operation'] === 'Transfert' && $op['sens'] === 'DEBIT'): ?>
-                        Vers <?= esc($op['dest_nom']) ?>
-                    <?php elseif ($op['type_operation'] === 'Transfert' && $op['sens'] === 'CREDIT'): ?>
-                        De <?= esc($op['source_nom']) ?>
+                    <?php if ($op['type_operation'] === 'Transfert' && $op['numero_destination'] && $op['sens'] === 'DEBIT'): ?>
+                        Vers <?= esc($op['numero_destination']) ?>
                     <?php elseif ($op['type_operation'] === 'Retrait' && $op['sens'] === 'CREDIT'): ?>
                         Frais opérateur
+                    <?php elseif ($op['type_operation'] === 'Transfert' && $op['sens'] === 'CREDIT'): ?>
+                        Commission opérateur
                     <?php endif; ?>
                 </td>
             </tr>

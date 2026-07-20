@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class CreateUtilisateurTable extends Migration
+class CreateClientTable extends Migration
 {
     public function up()
     {
@@ -15,29 +15,32 @@ class CreateUtilisateurTable extends Migration
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
-            'login' => [
+            'nom' => [
                 'type'       => 'VARCHAR',
-                'constraint' => 50,
+                'constraint' => 100,
                 'null'       => false,
             ],
-            'password' => [
+            'numero' => [
                 'type'       => 'VARCHAR',
-                'constraint' => 255,
+                'constraint' => 10,
                 'null'       => false,
             ],
-            'role' => [
-                'type'       => 'ENUM',
-                'allowed'    => ['ADMIN'],
-                'default'    => 'ADMIN',
-                'null'       => false,
+            'date_creation' => [
+                'type' => 'DATETIME',
+                'null' => true,
+            ],
+            'actif' => [
+                'type'    => 'BOOLEAN',
+                'default' => true,
             ],
         ]);
         $this->forge->addKey('id', true);
-        $this->forge->createTable('utilisateur');
+        $this->forge->addUniqueKey('numero', 'uk_client_numero');
+        $this->forge->createTable('client');
     }
 
     public function down()
     {
-        $this->forge->dropTable('utilisateur');
+        $this->forge->dropTable('client');
     }
 }

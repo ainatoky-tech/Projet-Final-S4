@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class CreateClientTable extends Migration
+class CreateCommissionTable extends Migration
 {
     public function up()
     {
@@ -15,19 +15,16 @@ class CreateClientTable extends Migration
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
-            'nom' => [
-                'type'       => 'VARCHAR',
-                'constraint' => 100,
+            'id_operateur' => [
+                'type'       => 'INT',
+                'constraint' => 11,
+                'unsigned'   => true,
                 'null'       => false,
             ],
-            'numero' => [
-                'type'       => 'VARCHAR',
-                'constraint' => 10,
+            'pourcentage' => [
+                'type'       => 'DECIMAL',
+                'constraint' => '5,2',
                 'null'       => false,
-            ],
-            'date_creation' => [
-                'type' => 'DATETIME',
-                'null' => true,
             ],
             'actif' => [
                 'type'    => 'BOOLEAN',
@@ -35,11 +32,12 @@ class CreateClientTable extends Migration
             ],
         ]);
         $this->forge->addKey('id', true);
-        $this->forge->createTable('client');
+        $this->forge->addForeignKey('id_operateur', 'operateur', 'id', 'CASCADE', 'CASCADE');
+        $this->forge->createTable('commission');
     }
 
     public function down()
     {
-        $this->forge->dropTable('client');
+        $this->forge->dropTable('commission');
     }
 }

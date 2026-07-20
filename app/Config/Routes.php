@@ -28,9 +28,14 @@ $routes->get('operations/historiques', 'Operation::historiques');
 
 // Admin
 $routes->get('admin/dashboard', 'Admin::dashboard');
+$routes->get('admin/operateurs', 'Admin::operateurs');
+$routes->get('admin/operateur/toggle/(:num)', 'Admin::operateurToggle/$1');
 $routes->get('admin/prefixes', 'Admin::prefixes');
 $routes->post('admin/prefixe/store', 'Admin::prefixeStore');
 $routes->get('admin/prefixe/toggle/(:num)', 'Admin::prefixeToggle/$1');
+$routes->get('admin/commissions', 'Admin::commissions');
+$routes->post('admin/commission/store', 'Admin::commissionStore');
+$routes->get('admin/commission/toggle/(:num)', 'Admin::commissionToggle/$1');
 $routes->get('admin/baremes', 'Admin::baremes');
 $routes->post('admin/bareme/update/(:num)', 'Admin::baremeUpdate/$1');
 $routes->post('admin/bareme/store', 'Admin::baremeStore');

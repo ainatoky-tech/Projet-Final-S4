@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class CreateTypeOperationTable extends Migration
+class CreateOperateurTable extends Migration
 {
     public function up()
     {
@@ -15,18 +15,22 @@ class CreateTypeOperationTable extends Migration
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
-            'libelle' => [
+            'nom' => [
                 'type'       => 'VARCHAR',
-                'constraint' => 50,
+                'constraint' => 100,
                 'null'       => false,
+            ],
+            'actif' => [
+                'type'    => 'BOOLEAN',
+                'default' => true,
             ],
         ]);
         $this->forge->addKey('id', true);
-        $this->forge->createTable('type_operation');
+        $this->forge->createTable('operateur');
     }
 
     public function down()
     {
-        $this->forge->dropTable('type_operation');
+        $this->forge->dropTable('operateur');
     }
 }

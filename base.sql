@@ -2,18 +2,47 @@ CREATE DATABASE IF NOT EXISTS mobile_money;
 
 USE mobile_money;
 
+CREATE TABLE operateur (
 
+    id INT AUTO_INCREMENT PRIMARY KEY,
+
+    nom VARCHAR(100) NOT NULL,
+
+    actif BOOLEAN DEFAULT TRUE
+
+);
 
 
 CREATE TABLE prefixe (
 
     id INT AUTO_INCREMENT PRIMARY KEY,
 
+    id_operateur INT NOT NULL,
+
     valeur VARCHAR(3) NOT NULL UNIQUE,
 
-    actif BOOLEAN DEFAULT TRUE
+    actif BOOLEAN DEFAULT TRUE,
+
+    FOREIGN KEY(id_operateur)
+        REFERENCES operateur(id)
 
 );
+
+CREATE TABLE commission (
+
+    id INT AUTO_INCREMENT PRIMARY KEY,
+
+    id_operateur INT NOT NULL,
+
+    pourcentage DECIMAL(5,2) NOT NULL,
+
+    actif BOOLEAN DEFAULT TRUE,
+
+    FOREIGN KEY(id_operateur)
+        REFERENCES operateur(id)
+
+);
+
 
 
 
@@ -111,34 +140,24 @@ CREATE TABLE operation (
 
     id INT AUTO_INCREMENT PRIMARY KEY,
 
-
     id_type_operation INT NOT NULL,
-
 
     id_client_source INT NOT NULL,
 
-
-    id_client_destination INT NULL,
-
+    numero_destination VARCHAR(10) NULL,
 
     montant DECIMAL(15,2) NOT NULL,
 
-
     frais DECIMAL(15,2) DEFAULT 0,
 
+    commission DECIMAL(15,2) DEFAULT 0,
 
     date_operation DATETIME DEFAULT CURRENT_TIMESTAMP,
-
 
     FOREIGN KEY(id_type_operation)
         REFERENCES type_operation(id),
 
-
     FOREIGN KEY(id_client_source)
-        REFERENCES client(id),
-
-
-    FOREIGN KEY(id_client_destination)
         REFERENCES client(id)
 
 );
@@ -178,16 +197,26 @@ CREATE TABLE mouvement (
 
 
 
-
-
-
-
-INSERT INTO prefixe(valeur)
+INSERT INTO operateur(nom)
 VALUES
-('033'),
-('037');
+('Notre Operateur'),
+('Orange Money'),
+('Airtel Money');
 
 
+
+INSERT INTO prefixe(id_operateur, valeur)
+VALUES
+(1, '033'),
+(1, '037'),
+(2, '032'),
+(3, '034');
+
+
+INSERT INTO commission(id_operateur, pourcentage)
+VALUES
+(2, 5.00),
+(3, 7.00);
 
 
 INSERT INTO type_operation(libelle)

@@ -2,7 +2,8 @@
 
 namespace App\Controllers;
 
-use CodeIgniter\Controller;
+use App\Models\ClientModel;
+use App\Models\UtilisateurModel;
 
 class Auth extends BaseController
 {
@@ -11,8 +12,8 @@ class Auth extends BaseController
         if ($this->request->is('post')) {
             $numero = $this->request->getPost('numero');
 
-            $db = db_connect();
-            $client = $db->query("SELECT * FROM client WHERE numero = ? AND actif = 1", [$numero])->getRowArray();
+            $clientModel = new ClientModel();
+            $client = $clientModel->where('numero', $numero)->where('actif', 1)->first();
 
             if ($client) {
                 session()->set([
@@ -35,8 +36,8 @@ class Auth extends BaseController
             $login    = $this->request->getPost('login');
             $password = $this->request->getPost('password');
 
-            $db = db_connect();
-            $user = $db->query("SELECT * FROM utilisateur WHERE login = ? AND password = ?", [$login, $password])->getRowArray();
+            $utilisateurModel = new UtilisateurModel();
+            $user = $utilisateurModel->where('login', $login)->where('password', $password)->first();
 
             if ($user) {
                 session()->set([

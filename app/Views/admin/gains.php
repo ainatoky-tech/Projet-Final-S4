@@ -12,7 +12,7 @@
 <div class="table-wrap">
 <table class="data">
     <thead>
-        <tr><th>Type d'opération</th><th>Nombre</th><th>Total frais</th></tr>
+        <tr><th>Type d'opération</th><th>Nombre</th><th>Total frais</th><th>Total commission</th><th>Total</th></tr>
     </thead>
     <tbody>
         <?php foreach ($gains as $g): ?>
@@ -20,6 +20,8 @@
             <td><strong><?= esc($g['type_operation']) ?></strong></td>
             <td><?= (int) $g['nombre'] ?></td>
             <td><?= number_format($g['total_frais'], 2, ',', ' ') ?> Ar</td>
+            <td><?= number_format($g['total_commission'], 2, ',', ' ') ?> Ar</td>
+            <td><strong><?= number_format($g['total'], 2, ',', ' ') ?> Ar</strong></td>
         </tr>
         <?php endforeach; ?>
     </tbody>

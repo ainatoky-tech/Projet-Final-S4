@@ -85,7 +85,9 @@
                         <span class="nav-user"><?= esc(session()->get('nom')) ?></span>
                     <?php elseif (session()->get('user_type') === 'admin'): ?>
                         <a href="/admin/dashboard">Dashboard</a>
+                        <a href="/admin/operateurs">Opérateurs</a>
                         <a href="/admin/prefixes">Préfixes</a>
+                        <a href="/admin/commissions">Commissions</a>
                         <a href="/admin/baremes">Barèmes</a>
                         <a href="/admin/gains">Gains</a>
                         <a href="/admin/comptes">Comptes</a>
