@@ -33,6 +33,7 @@ class CreateUtilisateurTable extends Migration
             ],
         ]);
         $this->forge->addKey('id', true);
+        $this->forge->addUniqueKey('login', 'uk_utilisateur_login');
         $this->forge->createTable('utilisateur');
     }
 

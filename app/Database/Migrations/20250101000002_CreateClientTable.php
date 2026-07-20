@@ -35,6 +35,7 @@ class CreateClientTable extends Migration
             ],
         ]);
         $this->forge->addKey('id', true);
+        $this->forge->addUniqueKey('numero', 'uk_client_numero');
         $this->forge->createTable('client');
     }
 

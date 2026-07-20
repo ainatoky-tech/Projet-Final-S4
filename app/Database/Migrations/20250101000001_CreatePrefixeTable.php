@@ -26,6 +26,7 @@ class CreatePrefixeTable extends Migration
             ],
         ]);
         $this->forge->addKey('id', true);
+        $this->forge->addUniqueKey('valeur', 'uk_prefixe_valeur');
         $this->forge->createTable('prefixe');
     }
 

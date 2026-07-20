@@ -35,5 +35,7 @@ Ce sera un système qui va simuler un opérateur de mobile money
 
 ### Tache pour 4075:
 **V1:**
-- composition de la base : en cours
-- compréhension du sujet : en cours
+- composition de la base : fait
+- compréhension du sujet : fait
+- creation des fichiers de migrations : fait
+- creation des fichier seeds : fait

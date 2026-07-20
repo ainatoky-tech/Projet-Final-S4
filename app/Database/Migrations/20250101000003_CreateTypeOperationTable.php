@@ -22,6 +22,7 @@ class CreateTypeOperationTable extends Migration
             ],
         ]);
         $this->forge->addKey('id', true);
+        $this->forge->addUniqueKey('libelle', 'uk_type_operation_libelle');
         $this->forge->createTable('type_operation');
     }
 
