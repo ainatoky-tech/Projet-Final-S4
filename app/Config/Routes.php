@@ -13,3 +13,6 @@ $routes->post('login/client', 'Auth::loginClient');
 $routes->get('login/admin', 'Auth::loginAdmin');
 $routes->post('login/admin', 'Auth::loginAdmin');
 $routes->get('logout', 'Auth::logout');
+
+// Client
+$routes->get('dashboard', 'Client::dashboard');
