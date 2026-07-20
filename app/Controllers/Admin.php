@@ -67,7 +67,8 @@ class Admin extends BaseController
         return redirect()->to('/admin/prefixes')->with('message', 'Statut du préfixe modifié.');
     }
 
-    // ---- BARÈMES ----
+    
+    /* ---- BARÈMES ----
 
     public function baremes()
     {
@@ -162,4 +163,5 @@ class Admin extends BaseController
 
         return view('admin/comptes', ['clients' => $clients]);
     }
+    */
 }
