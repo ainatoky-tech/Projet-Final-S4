@@ -6,7 +6,7 @@ use App\Models\ClientModel;
 use App\Models\CompteModel;
 use App\Models\OperationModel;
 use App\Models\MouvementModel;
-
+    
 class Operation extends BaseController
 {
     private function getCompteId($clientId)
