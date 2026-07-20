@@ -1,5 +1,3 @@
-
-
 CREATE DATABASE IF NOT EXISTS mobile_money;
 
 USE mobile_money;
@@ -20,6 +18,7 @@ CREATE TABLE prefixe (
 
 
 
+
 CREATE TABLE client (
 
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -33,6 +32,41 @@ CREATE TABLE client (
     actif BOOLEAN DEFAULT TRUE
 
 );
+
+
+
+
+
+CREATE TABLE compte (
+
+    id INT AUTO_INCREMENT PRIMARY KEY,
+
+    type_compte ENUM('CLIENT','OPERATEUR') NOT NULL,
+
+    id_client INT NULL,
+
+
+    FOREIGN KEY(id_client)
+        REFERENCES client(id)
+
+);
+
+
+
+
+
+CREATE TABLE utilisateur (
+
+    id INT AUTO_INCREMENT PRIMARY KEY,
+
+    login VARCHAR(50) NOT NULL UNIQUE,
+
+    password VARCHAR(255) NOT NULL,
+
+    role ENUM('ADMIN') DEFAULT 'ADMIN'
+
+);
+
 
 
 
@@ -71,19 +105,27 @@ CREATE TABLE bareme_frais (
 
 
 
+
+
 CREATE TABLE operation (
 
     id INT AUTO_INCREMENT PRIMARY KEY,
 
+
     id_type_operation INT NOT NULL,
+
 
     id_client_source INT NOT NULL,
 
+
     id_client_destination INT NULL,
+
 
     montant DECIMAL(15,2) NOT NULL,
 
+
     frais DECIMAL(15,2) DEFAULT 0,
+
 
     date_operation DATETIME DEFAULT CURRENT_TIMESTAMP,
 
@@ -104,6 +146,7 @@ CREATE TABLE operation (
 
 
 
+
 CREATE TABLE mouvement (
 
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -112,7 +155,7 @@ CREATE TABLE mouvement (
     id_operation INT NOT NULL,
 
 
-    id_client INT NOT NULL,
+    id_compte INT NOT NULL,
 
 
     sens ENUM('CREDIT','DEBIT') NOT NULL,
@@ -128,10 +171,12 @@ CREATE TABLE mouvement (
         REFERENCES operation(id),
 
 
-    FOREIGN KEY(id_client)
-        REFERENCES client(id)
+    FOREIGN KEY(id_compte)
+        REFERENCES compte(id)
 
 );
+
+
 
 
 
@@ -145,7 +190,6 @@ VALUES
 
 
 
-
 INSERT INTO type_operation(libelle)
 VALUES
 ('Depot'),
@@ -154,14 +198,37 @@ VALUES
 
 
 
-
-
 INSERT INTO client(nom,numero)
 VALUES
 ('Jean','0331234567'),
 ('Paul','0379876543'),
-('Marie','0331111111'),
-('OPERATEUR','0000000000');
+('Marie','0331111111');
+
+
+
+
+INSERT INTO compte(type_compte,id_client)
+VALUES
+('CLIENT',1),
+('CLIENT',2),
+('CLIENT',3);
+
+
+
+-- COMPTE OPERATEUR
+
+INSERT INTO compte(type_compte)
+VALUES
+('OPERATEUR');
+
+
+
+-- UTILISATEUR ADMIN
+
+INSERT INTO utilisateur(login,password)
+VALUES
+('admin','admin123');
+
 
 
 
@@ -184,6 +251,7 @@ VALUES
 
 
 
+-- RETRAIT
 
 INSERT INTO bareme_frais
 (
@@ -205,6 +273,7 @@ VALUES
 
 
 
+-- TRANSFERT
 
 INSERT INTO bareme_frais
 (

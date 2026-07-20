@@ -10,6 +10,8 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(PrefixeSeeder::class);
         $this->call(ClientSeeder::class);
+        $this->call(CompteSeeder::class);
+        $this->call(UtilisateurSeeder::class);
         $this->call(TypeOperationSeeder::class);
         $this->call(BaremeFraisSeeder::class);
     }

@@ -21,7 +21,7 @@ class CreateMouvementTable extends Migration
                 'unsigned'   => true,
                 'null'       => false,
             ],
-            'id_client' => [
+            'id_compte' => [
                 'type'       => 'INT',
                 'constraint' => 11,
                 'unsigned'   => true,
@@ -44,7 +44,7 @@ class CreateMouvementTable extends Migration
         ]);
         $this->forge->addKey('id', true);
         $this->forge->addForeignKey('id_operation', 'operation', 'id', 'CASCADE', 'CASCADE');
-        $this->forge->addForeignKey('id_client', 'client', 'id', 'CASCADE', 'CASCADE');
+        $this->forge->addForeignKey('id_compte', 'compte', 'id', 'CASCADE', 'CASCADE');
         $this->forge->createTable('mouvement');
     }
 

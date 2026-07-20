@@ -73,10 +73,22 @@
 <body>
     <header class="site-header">
         <nav class="nav">
-            <a href="/clients" class="brand"><span class="logo">M</span> Mobile Money</a>
+            <a href="/" class="brand"><span class="logo">M</span> Mobile Money</a>
             <div class="nav-links">
-                <a href="/clients">Clients</a>
-                <a href="/clients/create">Nouveau</a>
+                <?php if (session()->get('logged_in')): ?>
+                    <?php if (session()->get('user_type') === 'client'): ?>
+                        <a href="/dashboard">Tableau de bord</a>
+                        <a href="/operations/historiques">Historique</a>
+                        <span class="nav-user"><?= esc(session()->get('nom')) ?></span>
+                    <?php elseif (session()->get('user_type') === 'admin'): ?>
+                        <a href="/admin/dashboard">Administration</a>
+                        <span class="nav-user"><?= esc(session()->get('login')) ?></span>
+                    <?php endif; ?>
+                    <a href="/logout">Déconnexion</a>
+                <?php else: ?>
+                    <a href="/login/client">Client</a>
+                    <a href="/login/admin">Admin</a>
+                <?php endif; ?>
             </div>
         </nav>
     </header>
