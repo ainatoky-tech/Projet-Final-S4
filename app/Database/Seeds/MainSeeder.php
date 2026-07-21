@@ -16,6 +16,7 @@ class MainSeeder extends Seeder
         $this->call('PrefixeSeeder');
         $this->call('TypeOperationSeeder');
         $this->call('UtilisateurSeeder');
+        $this->call('EpargneSeeder');
         $this->db->query('PRAGMA foreign_keys = ON;');
     }
 }

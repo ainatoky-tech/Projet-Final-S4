@@ -72,13 +72,17 @@ class Operation extends BaseController
         if ($redirect = $this->checkClient()) return $redirect;
 
         if ($this->request->is('post')) {
+            $epargne = $this->request->getPost('epargne');
             $clientId = session()->get('client_id');
             $montant  = (float) $this->request->getPost('montant');
             $compteId = $this->getCompteId($clientId);
+            $epargneModel = new EpargneModel();
+            $montantfinale = $epargneModel->calculMontantAEnregistrer($epargne,$montant);
 
-            if ($montant <= 0) {
+            if ($montantfinale <= 0) {
                 return redirect()->back()->with('error', 'Montant invalide.');
             }
+
 
             $db = db_connect();
             $db->transBegin();
@@ -87,7 +91,7 @@ class Operation extends BaseController
             $operationModel->insert([
                 'id_type_operation' => 1,
                 'id_client_source'  => $clientId,
-                'montant'           => $montant,
+                'montant'           => $montantfinale,
                 'frais'             => 0,
                 'commission'        => 0,
             ]);
@@ -106,7 +110,7 @@ class Operation extends BaseController
                 return redirect()->back()->with('error', 'Erreur lors du dépôt.');
             }
             $db->transCommit();
-            return redirect()->to('/dashboard')->with('message', 'Dépôt de ' . number_format($montant, 2, ',', ' ') . ' Ar effectué.');
+            return redirect()->to('/dashboard')->with('message', 'Dépôt de ' . number_format($montantfinale, 2, ',', ' ') . ' Ar effectué.');
         }
 
         return view('operation/depot');
@@ -175,8 +179,9 @@ class Operation extends BaseController
             if ($montant <= 0) {
                 return redirect()->back()->with('error', 'Montant invalide.');
             }
-
+            $promotion  = $this->getPromotion();
             $frais      = $this->getFrais(3, $montant);
+            //$frais      = $frais - $promotion/100;
             $commission = 0;
 
             $pct = $this->getCommission($destinataire);
@@ -185,6 +190,7 @@ class Operation extends BaseController
             }
 
             $total    = $montant + $frais + $commission;
+
             $compteId = $this->getCompteId($clientId);
 
             $solde = $this->getSolde($compteId);
@@ -255,5 +261,17 @@ class Operation extends BaseController
         )->getResultArray();
 
         return view('operation/historiques', ['operations' => $operations]);
+    }
+
+    public function displayOption(){
+       if ($redirect = $this->checkClient()) return $redirect;
+        $clientId = session()->get('client_id');
+
+        $db = db_connect();
+        $operations = $db->query(
+            "SELECT * FROM epargne"
+        )->getResultArray();
+
+        return view('operation/depot', ['operations' => $operations]);
     }
 }

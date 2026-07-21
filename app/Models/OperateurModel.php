@@ -12,3 +12,4 @@ class OperateurModel extends Model
     protected $useTimestamps = false;
     protected $allowedFields = ['nom', 'actif'];
 }
+

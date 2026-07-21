@@ -13,7 +13,12 @@
             <div class="d-grid">
                 <button type="submit" class="btn btn-primary">Effectuer le dépôt</button>
             </div>
-        </form>
+            <select name="epargne" id="epargne">
+                <?php foreach($operations as $s){?>
+                <option value="<?= $s['pourcentage']?>"><?= $s['pourcentage']?></option>
+                <?php }?>
+            </select>
+        </form> 
     </div>
 </div>
 <?= $this->endSection() ?>
