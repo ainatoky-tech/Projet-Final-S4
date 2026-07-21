@@ -33,10 +33,11 @@ Ce sera un système qui va simuler un opérateur de mobile money
 **V2**
 - 
 
+
 ### Tache pour 4075:
-**V1:**
-- composition de la base : fait
+**V2:**
 - compréhension du sujet : fait
+- changement de la base : fait
 - creation des fichiers de migrations : fait
 - creation des fichier seeds : fait
-- mise en place de la logique dans controller : fait
+- mise en place de la logique transfere vers autre operateur dans controller : fait
