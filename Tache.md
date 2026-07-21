@@ -41,3 +41,12 @@ Ce sera un système qui va simuler un opérateur de mobile money
 - creation des fichiers de migrations : fait
 - creation des fichier seeds : fait
 - mise en place de la logique transfere vers autre operateur dans controller : fait
+
+# alea 2
+il y a une notion d'epargne
+le client a une interface qui dicte que son epargne est de n%
+imaginons qu'il dit qu'il veut epargner 50%
+tout pognon entrant en transfert 50% entre dans la base de donne
+les 50% restant entre dans sa solde 
+ce truc se fait pour chaque client
+

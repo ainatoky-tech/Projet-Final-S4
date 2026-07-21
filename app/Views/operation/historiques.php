@@ -6,7 +6,7 @@
 
 <?php if (empty($operations)): ?>
     <div class="card shadow-sm">
-        <div class="card-body text-muted">Aucune opération pour le moment.</div>
+        <div class="card-body text-muted">Aucune opération pour le moment.</div> 
     </div>
 <?php else: ?>
     <div class="table-responsive">

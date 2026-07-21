@@ -4,12 +4,12 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class OperateurModel extends Model
+class PromotionModel extends Model
 {
-    protected $table         = 'operateur';
+    protected $table         = 'promotion';
     protected $primaryKey    = 'id';
     protected $returnType    = 'array';
     protected $useTimestamps = false;
-    protected $allowedFields = ['nom', 'actif'];
+    protected $allowedFields = ['valeur'];
 }
 

@@ -19,6 +19,7 @@ $routes->get('dashboard', 'Client::dashboard');
 
 // Operations
 $routes->get('operations/depot', 'Operation::depot');
+$routes->get('operations/depot', 'Operation::displayOption');
 $routes->post('operations/depot', 'Operation::depot');
 $routes->get('operations/retrait', 'Operation::retrait');
 $routes->post('operations/retrait', 'Operation::retrait');
@@ -41,3 +42,4 @@ $routes->post('admin/bareme/update/(:num)', 'Admin::baremeUpdate/$1');
 $routes->post('admin/bareme/store', 'Admin::baremeStore');
 $routes->get('admin/gains', 'Admin::gains');
 $routes->get('admin/comptes', 'Admin::comptes');
+
