@@ -11,6 +11,13 @@ CREATE TABLE operateur (
     actif BOOLEAN DEFAULT TRUE
 
 );
+CREATE TABLE promotion (
+
+    id INT AUTO_INCREMENT PRIMARY KEY,
+
+    valeur DECIMAL(15,2) NOT NULL,
+
+);
 
 
 CREATE TABLE prefixe (
