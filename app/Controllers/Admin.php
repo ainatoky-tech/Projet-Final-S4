@@ -196,7 +196,7 @@ class Admin extends BaseController
 
     public function gains()
     {
-        if ($redirect = $this->checkAdmin()) return $redirect;
+        if ($redirect = $this->checkAdmin()) return $redirect;  
 
         $db = db_connect();
         $gains = $db->query(

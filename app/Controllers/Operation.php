@@ -108,7 +108,7 @@ class Operation extends BaseController
             $db->transCommit();
             return redirect()->to('/dashboard')->with('message', 'Dépôt de ' . number_format($montant, 2, ',', ' ') . ' Ar effectué.');
         }
-
+        
         return view('operation/depot');
     }
 
@@ -211,11 +211,15 @@ class Operation extends BaseController
 
             $operateurCompteId = $this->getOperateurCompteId();
             $mouvements = [
+                // 1. L'expéditeur est débité du montant total (ou séparé, mais il faut que ce soit cohérent)
                 ['id_operation' => $operationId, 'id_compte' => $compteId, 'sens' => 'DEBIT', 'montant' => $montant],
-                ['id_operation' => $operationId, 'id_compte' => $compteId, 'sens' => 'DEBIT', 'montant' => $frais],
-                ['id_operation' => $operationId, 'id_compte' => $compteId, 'sens' => 'DEBIT', 'montant' => $commission],
-                ['id_operation' => $operationId, 'id_compte' => $operateurCompteId, 'sens' => 'CREDIT', 'montant' => $frais],
-                ['id_operation' => $operationId, 'id_compte' => $operateurCompteId, 'sens' => 'CREDIT', 'montant' => $commission],
+                ['id_operation' => $operationId, 'id_compte' => $compteId, 'sens' => 'DEBIT', 'montant' => $frais + $commission], // Frais + commission groupés ou séparés
+                
+                // 2. Le destinataire reçoit le montant (SI c'est un client interne de votre appli)
+                // ['id_operation' => $operationId, 'id_compte' => $compteDestinataireId, 'sens' => 'CREDIT', 'montant' => $montant],
+
+                // 3. L'opérateur récolte les frais et commissions
+                ['id_operation' => $operationId, 'id_compte' => $operateurCompteId, 'sens' => 'CREDIT', 'montant' => $frais + $commission],
             ];
 
             $mouvementModel = new MouvementModel();

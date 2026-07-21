@@ -30,6 +30,8 @@ Ce sera un système qui va simuler un opérateur de mobile money
 - préparation de la database dans writable en .sqlite: fait
 - initialisation des models : fait 
 - utilisation des migrations pour les tables : fait
+**V2**
+- 
 
 ### Tache pour 4075:
 **V1:**
